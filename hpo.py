@@ -168,35 +168,6 @@ def main(args):
     
 
 
-def model_fn(model_dir):
-    """
-    Load the model for inference
-    """
-    
-    print('Loading the model!!!')
-    model = net()
-    
-    modeldir_path = os.path.join(model_dir, "modelp3.pt")
-    with open(modeldir_path, 'rb') as f:
-        model.load_state_dict(torch.load(f))
-
-    return model
-    
-
-
-def predict_fn(input_data, model):
-    """
-    Apply model to the incoming request
-    """
-    print('Running predictions!!!')
-    
-    device = torch.device("cpu")
-    model.to(device).eval()
-    with torch.no_grad():
-        return model(input_data.to(device))
-
-
-
 if __name__=='__main__':
     
     parser=argparse.ArgumentParser(description = "define hyperparameters for fine tuning Pytorch CIFAR10 model")
