@@ -53,10 +53,12 @@ The model hyperparameters are: `epochs`, `batch_size`, `test_batch_size`, and `l
 
 Hyperparameter tuning was performed on the values of two hyperparameters: `lr` and `batch_size`. Using the following configuration:
 
-`hyperparameter_ranges = {
+<pre>
+hyperparameter_ranges = {
     'lr': ContinuousParameter(0.001, 0.01, scaling_type='Logarithmic'),
     'batch_size': CategoricalParameter([40, 60])
-}`
+}
+</pre>
 
 
 ## Debugging and Profiling
@@ -73,7 +75,8 @@ To perform model debugging you need to modify the the submission script and the 
 
 2- Import the following `sagemaker.debugger` libraries:
 
-`from sagemaker.debugger import(
+<pre>
+from sagemaker.debugger import(
     Rule,
     ProfilerRule,
     rule_configs,
@@ -81,12 +84,15 @@ To perform model debugging you need to modify the the submission script and the 
     ProfilerConfig,
     FrameworkProfile,
     CollectionConfig
-)`
+)
+</pre>
 
 
 3- Define the debugger rules to specify the type of debugger evaluation you want monitor:
 
-`rules = [
+
+<pre>
+rules = [
     Rule.sagemaker(rule_configs.vanishing_gradient()),
     Rule.sagemaker(rule_configs.overfit()),
     Rule.sagemaker(rule_configs.overtraining()),
@@ -94,18 +100,21 @@ To perform model debugging you need to modify the the submission script and the 
     Rule.sagemaker(rule_configs.loss_not_decreasing()),
     ProfilerRule.sagemaker(rule_configs.LowGPUUtilization()),
     ProfilerRule.sagemaker(rule_configs.ProfilerReport())
-]`
+]
+</pre>
 
 
 4- Define the debugger hook configuration:
 
-`hook_config = DebuggerHookConfig(
+<pre>
+hook_config = DebuggerHookConfig(
     s3_output_path=f"s3://{bucket}/{prefix}/debug-output",
     hook_parameters={
         "train.save_interval":"100",
         "eval.save_interval":"10"
     }
-)`
+)
+</pre>
 
 
 - Modifications to the training script include the import of `{smdebug.pytorch}` library the definition of SMDebug hook and modifications to `train()` and `test()` functions to include the SMDebug hook.
@@ -147,15 +156,25 @@ The method `endpoint.predict()` takes an image (of bytes object type) as input d
 
 The following code will acomplish that (where paylod is the input to query the endpoint):
 
-`
+<pre>
 with open("image_path", 'rb') as f:
     payload = f.read()
-`
+</pre>
 
-`
+<pre>
 result = endpoint.predict(
     data = payload,
     initial_args = {'ContentType':"image/jpeg"}
 )
-`
+</pre>
 
+
+![Screenshot of completed training jobs](https://github.com/fsoaresantos/Finetuning-a-custom-Image-Classification-Model-using-a-custom-dataset-and-PyTorch-in-AWS-SageMaker/blob/main/Screenshot-completed-training-jobs-2022-07-29.jpeg?raw=true)
+
+**Figure 1**: Screenshot of completed training jobs
+<br />
+<br />
+
+![Screenshot of active endpoint](https://github.com/fsoaresantos/Finetuning-a-custom-Image-Classification-Model-using-a-custom-dataset-and-PyTorch-in-AWS-SageMaker/blob/8773a0392a3875ab47789dba7d609fa657f9c2a7/Screenshot-active-endpoint-2022-07-29.jpeg)
+
+**Figure 2**: Screenshot of active endpoint
