@@ -175,9 +175,9 @@ result = endpoint.predict(
 <br />
 <br />
 
-![Screenshot of training runs]()
+![Screenshot of training runs](https://github.com/fsoaresantos/Finetuning-a-custom-Image-Classification-Model-using-a-custom-dataset-and-PyTorch-in-AWS-SageMaker/blob/main/Screenshot-HPT-training-jobs-Status-MetricValues-2022-07-30.jpeg?raw=true)
 
-**Figure 2**: Screenshot of training runs displaying the objective metric values
+**Figure 2**: Screenshot of Hyperparameter tuning jobs displaying objective metric values
 <br />
 <br />
 
