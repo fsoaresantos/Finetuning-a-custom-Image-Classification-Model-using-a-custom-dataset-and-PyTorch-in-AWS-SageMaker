@@ -175,6 +175,12 @@ result = endpoint.predict(
 <br />
 <br />
 
-![Screenshot of active endpoint](https://github.com/fsoaresantos/Finetuning-a-custom-Image-Classification-Model-using-a-custom-dataset-and-PyTorch-in-AWS-SageMaker/blob/8773a0392a3875ab47789dba7d609fa657f9c2a7/Screenshot-active-endpoint-2022-07-29.jpeg)
+![Screenshot of training runs]()
+
+**Figure 2**: Screenshot of training runs displaying the objective metric values
+<br />
+<br />
+
+![Screenshot of active endpoint](https://github.com/fsoaresantos/Finetuning-a-custom-Image-Classification-Model-using-a-custom-dataset-and-PyTorch-in-AWS-SageMaker/blob/main/Screenshot-active-endpoint-2022-07-29.jpeg?raw=true)
 
 **Figure 2**: Screenshot of active endpoint
