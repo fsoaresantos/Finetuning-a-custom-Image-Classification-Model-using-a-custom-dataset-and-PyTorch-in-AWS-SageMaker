@@ -183,4 +183,4 @@ result = endpoint.predict(
 
 ![Screenshot of active endpoint](https://github.com/fsoaresantos/Finetuning-a-custom-Image-Classification-Model-using-a-custom-dataset-and-PyTorch-in-AWS-SageMaker/blob/main/Screenshot-active-endpoint-2022-07-29.jpeg?raw=true)
 
-**Figure 2**: Screenshot of active endpoint
+**Figure 3**: Screenshot of active endpoint
